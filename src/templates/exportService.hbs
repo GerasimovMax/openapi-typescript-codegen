@@ -29,6 +29,7 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 {{else}}
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
+import { DefaultApiResponse } from '../core/ApiResult';
 {{/if}}
 
 {{#equals @root.httpClient 'angular'}}
@@ -81,7 +82,7 @@ export class {{{name}}}{{{@root.postfix}}} {
 	public {{{name}}}({{>parameters}}): Observable<{{>result}}> {
 		return __request(OpenAPI, this.http, {
 	{{else}}
-	public static {{{name}}}({{>parameters}}): CancelablePromise<{{>result}}> {
+	public static {{{name}}}({{>parameters}}): CancelablePromise<DefaultApiResponse<{{>result}}>> {
 		return __request(OpenAPI, {
 	{{/equals}}
 	{{/if}}

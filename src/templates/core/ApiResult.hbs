@@ -7,3 +7,10 @@ export type ApiResult = {
 	readonly statusText: string;
 	readonly body: any;
 };
+
+export type DefaultApiResponse<T> = {
+  readonly success?: boolean
+  readonly message?: string
+  readonly errors? : Array<string>
+  readonly data?: T
+}
